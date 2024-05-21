@@ -1,18 +1,24 @@
 import "./style.css";
-import javascriptLogo from "./javascript.svg";
-import viteLogo from "/vite.svg";
 
-document.querySelector("#app").innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`;
+window.onload = () => {
+  // Function to add value to the input field
+  function addValue(value) {
+    document.querySelector(".equation").value += value;
+  }
+
+  // Function to clear the input field
+  function clearDisplay() {
+    document.querySelector(".equation").value = "";
+  }
+
+  // Function to calculate the result
+  function calculate() {
+    try {
+      const equation = document.querySelector(".equation").value;
+      const result = eval(equation); // Using eval for simplicity (not recommended for production)
+      document.querySelector(".result").textContent = result;
+    } catch (error) {
+      document.querySelector(".result").textContent = "Error";
+    }
+  }
+};

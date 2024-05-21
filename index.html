@@ -2,12 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Calculator App | Vanilla JS Project</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="display">
+        <input type="text" value="" class="equation" readonly />
+        <div class="result">result</div>
+      </div>
+      <div class="buttons">
+        <button class="buttons_key" onclick="clearDisplay()">C</button>
+        <button class="buttons_key" onclick="addValue('(')">(</button>
+        <button class="buttons_key" onclick="addValue(')')">)</button>
+        <button class="buttons_key" onclick="addValue('÷')">÷</button>
+        <button class="buttons_key" onclick="addValue('1')">1</button>
+        <button class="buttons_key" onclick="addValue('2')">2</button>
+        <button class="buttons_key" onclick="addValue('3')">3</button>
+        <button class="buttons_key" onclick="addValue('×')">×</button>
+        <button class="buttons_key" onclick="addValue('4')">4</button>
+        <button class="buttons_key" onclick="addValue('5')">5</button>
+        <button class="buttons_key" onclick="addValue('6')">6</button>
+        <button class="buttons_key" onclick="addValue('-')">-</button>
+        <button class="buttons_key" onclick="addValue('7')">7</button>
+        <button class="buttons_key" onclick="addValue('8')">8</button>
+        <button class="buttons_key" onclick="addValue('9')">9</button>
+        <button class="buttons_key" onclick="addValue('+')">+</button>
+        <button class="buttons_key" onclick="addValue('%')">%</button>
+        <button class="buttons_key" onclick="addValue('0')">0</button>
+        <button class="buttons_key" onclick="addValue('.')">.</button>
+        <button class="buttons_key" onclick="calculate()">=</button>
+      </div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
