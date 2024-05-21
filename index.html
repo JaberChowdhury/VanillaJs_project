@@ -9,14 +9,19 @@
   <body>
     <div id="app">
       <div class="display">
-        <input type="text" value="" class="equation" readonly />
+        <input
+          type="text"
+          value="183 + 2838 - 827 / 2826 * 291"
+          class="equation"
+          readonly
+        />
         <div class="result">result</div>
       </div>
       <div class="buttons">
         <button class="buttons_key" onclick="clearDisplay()">C</button>
         <button class="buttons_key" onclick="addValue('(')">(</button>
         <button class="buttons_key" onclick="addValue(')')">)</button>
-        <button class="buttons_key" onclick="addValue('÷')">÷</button>
+        <button class="buttons_key" onclick="addValue('/')">÷</button>
         <button class="buttons_key" onclick="addValue('1')">1</button>
         <button class="buttons_key" onclick="addValue('2')">2</button>
         <button class="buttons_key" onclick="addValue('3')">3</button>
@@ -35,6 +40,7 @@
         <button class="buttons_key" onclick="calculate()">=</button>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/main.js" defer></script>
+    <script type="module" src="./main.js" defer></script>
   </body>
 </html>

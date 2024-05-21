@@ -16,9 +16,14 @@ window.onload = () => {
     try {
       const equation = document.querySelector(".equation").value;
       const result = eval(equation); // Using eval for simplicity (not recommended for production)
-      document.querySelector(".result").textContent = result;
+      // document.querySelector('.result').textContent = result;
+      document.querySelector(".result").innerHTML = result;
     } catch (error) {
-      document.querySelector(".result").textContent = "Error";
+      document.querySelector(".result").textContent = JSON.stringify(error);
     }
   }
+
+  window.addValue = addValue;
+  window.calculate = calculate;
+  window.clearDisplay = clearDisplay;
 };
