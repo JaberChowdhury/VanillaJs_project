@@ -1,3 +1,3 @@
-# Branch : starter
+# Branch : calculator
 
-### Description : starter code of projects without tailwind
+### Description : create a calculator with various features
