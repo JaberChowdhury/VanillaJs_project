@@ -1,2 +1,3 @@
-# Branch : starter
-### Description : starter code of projects without tailwind
+# Branch : image-slider
+
+### Description : image-slider in vanilla js with css
