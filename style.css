@@ -33,14 +33,9 @@ section > .number {
   line-height: 0.9em;
   transition: 1s;
 }
+
 .number > span:hover {
   transition: 0s;
   color: #fff;
-  text-shadow:
-    0px 0px 10px #0f0,
-    0px 0px 20px #0f0,
-    0px 0px 40px #0f0,
-    0px 0px 80px #0f0,
-    0px 0px 160px #0f0;
   z-index: 100000;
 }
