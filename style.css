@@ -5,6 +5,9 @@ html {
   box-sizing: border-box;
   font-family: "Poppins";
 }
+body {
+  overflow: hidden;
+}
 
 section {
   background-color: #242424;

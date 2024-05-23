@@ -5,7 +5,7 @@ window.onload = () => {
 
   const generateNumbers = () => {
     let newArray = [];
-    for (let i = 0; i < window.innerHeight; i++) {
+    for (let i = 0; i < window.innerHeight + window.innerWidth; i++) {
       newArray.push(Math.floor(Math.random() * 9));
     }
     return newArray;
