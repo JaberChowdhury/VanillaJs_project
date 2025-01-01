@@ -23,6 +23,7 @@ section > .number {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  cursor: pointer:
 }
 
 .number > span {
