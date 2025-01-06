@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssbattle</title>
+    <style>
+      body {
+        background-color: #3f4869;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        --width: 300px;
+        --height: 300px;
+        position: relative;
+      }
+      .box {
+        width: var(--width);
+        height: var(--height);
+        background-color: #b8dcf0;
+        transform: rotate(45deg);
+        position: absolute;
+      }
+      .left {
+        left: -312px;
+      }
+      .right {
+        right: -312px;
+      }
+      .center {
+        --width: 71.1px;
+        width: var(--width);
+        height: var(--width);
+        background-color: #3f4869;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box left"></div>
+      <div class="box right"></div>
+      <div class="box center"></div>
+    </div>
+  </body>
+  <!-- https://cssbattle.dev/play/ZcozzPDt8PEqIGK0AWYb -->>
+</html>
