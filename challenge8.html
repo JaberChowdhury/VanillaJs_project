@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssbattle</title>
+    <style>
+      body {
+        background-color: #4a9a86;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        min-height: 100vh;
+      }
+      .box {
+        --size: 80px;
+        width: var(--size);
+        height: var(--size);
+        background-color: #4c4c6b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .circle {
+        --circle-size: 40px;
+        width: var(--circle-size);
+        height: var(--circle-size);
+        background-color: #fae29e;
+        border-radius: 50%;
+      }
+      .box:nth-of-type(2) {
+        background-color: #fae29e;
+      }
+      .box:nth-of-type(2) > .circle {
+        background-color: #4c4c6b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"><div class="circle"></div></div>
+    <div class="box"><div class="circle"></div></div>
+    <div class="box"><div class="circle"></div></div>
+  </body>
+  <!-- https://cssbattle.dev/play/9LuvQNWYiDjNI8AxbTNI -->
+</html>
