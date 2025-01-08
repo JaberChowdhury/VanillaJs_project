@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssbattle</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #d95362;
+      }
+      .flexbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        width: 400px;
+        height: 300px;
+        background-color: #d95362;
+      }
+      .circle {
+        --size: 220px;
+        width: var(--size);
+        height: var(--size);
+        background-color: #2d3464;
+        border-radius: 50%;
+      }
+      .varticle {
+        height: 80px;
+        width: 40px;
+        background-color: #d95362;
+        position: absolute;
+        top: 75px;
+      }
+      .horizontal {
+        width: 150px;
+        height: 40px;
+        background-color: #d95362;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flexbox container">
+      <div class="flexbox circle">
+        <div class="varticle"></div>
+        <div class="horizontal"></div>
+      </div>
+    </div>
+  </body>
+  <!-- https://cssbattle.dev/play/NJ8caI7ZXa656lcuFn1F -->
+</html>
