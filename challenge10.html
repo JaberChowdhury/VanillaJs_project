@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssbattle</title>
+    <style>
+      body {
+        --bgcolor: #fade8b;
+        --boxcolor: #61a74e;
+        margin: 0;
+        background-color: var(--bgcolor);
+      }
+      .container {
+        position: relative;
+      }
+      .container > div {
+        position: absolute;
+      }
+      .vertical {
+        width: 40px;
+        height: 190px;
+        background-color: var(--boxcolor);
+        left: 105px;
+        top: 15px;
+      }
+      .circle {
+        width: 40px;
+        height: 40px;
+        border: 40px solid var(--boxcolor);
+        border-radius: 50%;
+        position: absolute;
+      }
+      .circle1 {
+        top: 165px;
+        left: 65px;
+      }
+      .circle2 {
+        top: 15px;
+        left: 215px;
+      }
+      .rounded {
+        --size: 172px;
+        left: 50px;
+        width: var(--size);
+        height: var(--size);
+        border: 35px solid transparent;
+        border-right: 40px solid var(--boxcolor);
+        border-radius: 50%;
+        transform: rotate(40deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="vertical"></div>
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="rounded"></div>
+    </div>
+  </body>
+  <!-- https://cssbattle.dev/play/gexpxx48RNHOb5xUuENv -->
+</html>
