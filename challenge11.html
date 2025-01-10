@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cssbattle</title>
+    <style>
+      body {
+        background-color: #ffe4e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .round {
+        --size: 200px;
+        width: var(--size);
+        height: var(--size);
+        border: 50px solid transparent;
+        border-bottom: 50px solid #e05947;
+        border-left: 50px solid #e05947;
+        transform: rotate(-45deg);
+        border-radius: 50%;
+        position: absolute;
+        top: -40;
+      }
+      .verticle {
+        width: 50px;
+        height: 120px;
+        background-color: #e05947;
+        z-index: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="round"></div>
+    <div class="verticle"></div>
+  </body>
+  <!-- https://cssbattle.dev/play/yR1YMEZEO78DGeVBxnAQ -->
+</html>
