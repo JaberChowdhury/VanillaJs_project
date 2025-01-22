@@ -1,2 +1,5 @@
 import "./style.css";
-alert("Hello, world!");
+
+window.onload = () => {
+  console.log("Hello World");
+};
