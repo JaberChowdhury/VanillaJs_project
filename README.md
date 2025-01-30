@@ -1,0 +1,1 @@
+https://github.com/ProgrammingHero1/legal-solution-resources.git
