@@ -1,13 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/dist/main.css" rel="stylesheet" />
   </head>
-  <body>
-    <h1 class="text-slate-300 font-bold underline text-3xl">Hello world!</h1>
-    <h1 class="text-slate-300 font-bold underline text-3xl">Hello world!</h1>
+  <body class="w-full flex justify-center items-center container mx-auto px-12">
+    <div class="carousel">
+      <div
+        id="slide1"
+        class="carousel-item relative w-full justify-center items-center flex"
+      >
+        <div
+          class="absolute scale-[0.5] lg:scale-100 bg-white/[0.5] p-6 rounded-md space-y-6 backdrop-blur-sm"
+        >
+          <p class="lg:lg:text-6xl text-2xl font-bold">Buy Pet</p>
+          <p class="text-base lg:text-2xl font-semibold">
+            Lorem ipsum dolor sit amet consectetur <br />
+            adipisicing elit. Numquam inventore, voluptates doloribus <br />
+            vero quis eos error eum quia dignissimos, sapiente assumenda, sed
+            facilis.
+          </p>
+          <button class="btn bg-orange-400 text-white">See more</button>
+        </div>
+        <img
+          src="https://images5.alphacoders.com/452/452950.jpg"
+          class="w-full h-full"
+        />
+        <div
+          class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+        >
+          <a href="#slide4" class="btn btn-circle">❮</a>
+          <a href="#slide2" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div
+        id="slide2"
+        class="carousel-item relative w-full justify-center items-center flex"
+      >
+        <div
+          class="absolute scale-[0.5] lg:scale-100 bg-white/[0.5] p-6 rounded-md space-y-6 backdrop-blur-sm"
+        >
+          <p class="lg:text-6xl text-2xl font-bold">Buy Pet</p>
+          <p class="text-base lg:text-2xl font-semibold">
+            Lorem ipsum dolor sit amet consectetur <br />
+            adipisicing elit. Numquam inventore, voluptates doloribus <br />
+            vero quis eos error eum quia dignissimos, sapiente assumenda, sed
+            facilis.
+          </p>
+          <button class="btn bg-orange-400 text-white">See more</button>
+        </div>
+        <img
+          src="https://c0.wallpaperflare.com/preview/227/1011/791/two-guinea-pigs-eating-cheese.jpg"
+          class="w-full"
+        />
+        <div
+          class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+        >
+          <a href="#slide1" class="btn btn-circle">❮</a>
+          <a href="#slide3" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div
+        id="slide3"
+        class="carousel-item relative w-full justify-center items-center flex"
+      >
+        <div
+          class="absolute scale-[0.5] lg:scale-100 bg-white/[0.5] p-6 rounded-md space-y-6 backdrop-blur-sm"
+        >
+          <p class="lg:text-6xl text-2xl font-bold">Buy Pet</p>
+          <p class="text-base lg:text-2xl font-semibold">
+            Lorem ipsum dolor sit amet consectetur <br />
+            adipisicing elit. Numquam inventore, voluptates doloribus <br />
+            vero quis eos error eum quia dignissimos, sapiente assumenda, sed
+            facilis.
+          </p>
+          <button class="btn bg-orange-400 text-white">See more</button>
+        </div>
+        <img
+          src="https://images5.alphacoders.com/599/599101.jpg"
+          class="w-full h-full"
+        />
+        <div
+          class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+        >
+          <a href="#slide2" class="btn btn-circle">❮</a>
+          <a href="#slide4" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+      <div
+        id="slide4"
+        class="carousel-item relative w-full justify-center items-center flex"
+      >
+        <div
+          class="absolute scale-[0.5] lg:scale-100 bg-white/[0.5] p-6 rounded-md space-y-6 backdrop-blur-sm"
+        >
+          <p class="lg:text-6xl text-2xl font-bold">Buy Pet</p>
+          <p class="text-base lg:text-2xl font-semibold">
+            Lorem ipsum dolor sit amet consectetur <br />
+            adipisicing elit. Numquam inventore, voluptates doloribus <br />
+            vero quis eos error eum quia dignissimos, sapiente assumenda, sed
+            facilis.
+          </p>
+          <button class="btn bg-orange-400 text-white">See more</button>
+        </div>
+        <img
+          src="https://img.freepik.com/free-photo/close-up-kitten-exploring-nature_23-2150782371.jpg?t=st=1738417087~exp=1738420687~hmac=069563ebadc2afbdce6383a30e8393819c6f930fe95adaaea2a9e2e7d38bbc2e&w=2000"
+          class="w-full h-full"
+        />
+        <div
+          class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"
+        >
+          <a href="#slide3" class="btn btn-circle">❮</a>
+          <a href="#slide1" class="btn btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
+  <style>
+    * {
+      border: 1px dashed;
+    }
+  </style>
 </html>
