@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, test, expect } from "vitest";
 import { add, divide, multiplication, substract } from "../src/mathUtils";
 
 describe("Math utils", () => {
@@ -22,6 +22,16 @@ describe("Math utils", () => {
 describe("Math utils", () => {
   it("Should divide two number", () => {
     expect(divide(10, 10)).toBe(1);
-    // expect(divide(10, 0)).toBe("");
+    // expect(divide(10, 0)).toThrow("A number can not be divided by 0");
+  });
+});
+
+describe("Math utils", () => {
+  test("Should divide two number from custom numbers", () => {
+    let a, b;
+    a = 100;
+    b = 100;
+    const result = divide(a, b);
+    expect(result).toBe(1);
   });
 });
