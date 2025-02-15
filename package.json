@@ -8,15 +8,18 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest",
+    "test:inspect": "vitest --no-file-parallelism --inspect",
     "test:ui": "vitest --ui"
   },
   "devDependencies": {
+    "@types/node": "^22.13.4",
     "@vitest/coverage-istanbul": "3.0.5",
     "@vitest/ui": "3.0.5",
     "typescript": "~5.6.3",
     "vite": "^6.0.11"
   },
   "dependencies": {
+    "moment": "^2.30.1",
     "vitest": "^3.0.5"
   }
 }

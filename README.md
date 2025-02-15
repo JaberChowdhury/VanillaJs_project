@@ -979,3 +979,325 @@ test("reset counter", () => {
   expect(counter).toBe(0);
 });
 ```
+
+# advanced testing concepts
+
+### 1. **Parameterized Tests**
+
+Parameterized tests allow you to run the same test with multiple inputs. This is useful for testing functions with a variety of inputs.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+test.each([
+  [2, true],
+  [3, false],
+  [0, true],
+  [-4, true],
+])("isEven(%i) should return %s", (input, expected) => {
+  expect(isEven(input)).toBe(expected);
+});
+```
+
+- Use `test.each` to run the same test with different inputs.
+- This reduces code duplication and makes tests more maintainable.
+
+---
+
+### 2. **Testing Side Effects**
+
+Sometimes, functions have side effects (e.g., modifying external state or making API calls). Testing these requires mocking or spying.
+
+#### Example:
+
+```javascript
+import { expect, test, vi } from "vitest";
+
+let counter = 0;
+
+function increment() {
+  counter++;
+}
+
+test("increment should increase counter by 1", () => {
+  increment();
+  expect(counter).toBe(1);
+});
+```
+
+- Use `vi.spyOn()` to spy on functions and track their calls.
+- Use `vi.fn()` to mock functions and control their behavior.
+
+---
+
+### 3. **Testing Error Handling**
+
+Ensure your code handles errors gracefully by testing error scenarios.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+function throwError() {
+  throw new Error("Something went wrong");
+}
+
+test("throwError should throw an error", () => {
+  expect(() => throwError()).toThrow("Something went wrong");
+});
+```
+
+- Use `.toThrow()` to test if a function throws an error.
+- You can also test for specific error messages or error types.
+
+---
+
+### 4. **Testing API Calls**
+
+When testing code that makes API calls, you can mock the API to avoid making real network requests.
+
+#### Example:
+
+```javascript
+import { expect, test, vi } from "vitest";
+import axios from "axios";
+
+vi.mock("axios");
+
+test("fetchUser should return user data", async () => {
+  const mockUser = { name: "John Doe" };
+  axios.get.mockResolvedValue({ data: mockUser });
+
+  const user = await axios.get("/user");
+  expect(user.data).toEqual(mockUser);
+});
+```
+
+- Use `vi.mock()` to mock modules like `axios`.
+- Use `.mockResolvedValue()` to simulate successful API responses.
+
+---
+
+### 5. **Testing Hooks (e.g., React Hooks)**
+
+If you’re working with React, you can test hooks using **React Testing Library**.
+
+#### Example:
+
+```javascript
+import { renderHook, act } from "@testing-library/react";
+import { expect, test } from "vitest";
+import useCounter from "./useCounter";
+
+test("useCounter should increment count", () => {
+  const { result } = renderHook(() => useCounter());
+
+  act(() => {
+    result.current.increment();
+  });
+
+  expect(result.current.count).toBe(1);
+});
+```
+
+- Use `renderHook` to test custom hooks.
+- Use `act` to wrap state updates.
+
+---
+
+### 6. **Testing Context (e.g., React Context)**
+
+Testing components that rely on context can be tricky. You can mock the context provider for testing.
+
+#### Example:
+
+```javascript
+import { render, screen } from "@testing-library/react";
+import { expect, test } from "vitest";
+import { UserContext } from "./UserContext";
+import UserProfile from "./UserProfile";
+
+test("UserProfile should display user name", () => {
+  const user = { name: "John Doe" };
+
+  render(
+    <UserContext.Provider value={user}>
+      <UserProfile />
+    </UserContext.Provider>
+  );
+
+  expect(screen.getByText("John Doe")).toBeInTheDocument();
+});
+```
+
+- Wrap your component in a context provider during testing.
+- Use `screen` to query the rendered output.
+
+---
+
+### 7. **Testing Performance**
+
+You can write tests to ensure your code meets performance benchmarks.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+function heavyComputation() {
+  let sum = 0;
+  for (let i = 0; i < 1e6; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+test("heavyComputation should complete within 50ms", () => {
+  const start = performance.now();
+  heavyComputation();
+  const end = performance.now();
+  expect(end - start).toBeLessThan(50);
+});
+```
+
+- Use `performance.now()` to measure execution time.
+- Use `.toBeLessThan()` to enforce performance constraints.
+
+---
+
+### 8. **Testing Environment Variables**
+
+Sometimes, your code relies on environment variables. You can mock these in your tests.
+
+#### Example:
+
+```javascript
+import { expect, test, vi } from "vitest";
+
+function getApiUrl() {
+  return process.env.API_URL || "https://default-api.com";
+}
+
+test("getApiUrl should return the correct URL", () => {
+  process.env.API_URL = "https://test-api.com";
+  expect(getApiUrl()).toBe("https://test-api.com");
+
+  delete process.env.API_URL;
+  expect(getApiUrl()).toBe("https://default-api.com");
+});
+```
+
+- Use `process.env` to access environment variables.
+- Mock environment variables as needed for your tests.
+
+---
+
+### 9. **Testing Third-Party Libraries**
+
+When using third-party libraries, you may want to mock or spy on their behavior.
+
+#### Example:
+
+```javascript
+import { expect, test, vi } from "vitest";
+import moment from "moment";
+
+vi.mock("moment", () => ({
+  default: vi.fn(() => ({
+    format: vi.fn(() => "2023-10-01"),
+  })),
+}));
+
+test("moment should return mocked date", () => {
+  const date = moment().format("YYYY-MM-DD");
+  expect(date).toBe("2023-10-01");
+});
+```
+
+- Use `vi.mock()` to mock third-party libraries.
+- Replace their behavior with mock implementations.
+
+---
+
+### 10. **Testing with TypeScript**
+
+If you’re using TypeScript, Vitest works seamlessly with it. You can write type-safe tests.
+
+#### Example:
+
+```typescript
+import { expect, test } from "vitest";
+
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+test("add should return the sum of two numbers", () => {
+  expect(add(2, 3)).toBe(5);
+});
+```
+
+- Vitest automatically infers types in TypeScript.
+- Use type annotations to ensure your tests are type-safe.
+
+---
+
+### 11. **Continuous Integration (CI) with Vitest**
+
+Integrate Vitest into your CI/CD pipeline to run tests automatically.
+
+#### Example (GitHub Actions):
+
+```yaml
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm test
+```
+
+- Use Vitest in your CI pipeline to ensure code quality.
+- Configure your CI tool (e.g., GitHub Actions, CircleCI) to run `vitest`.
+
+---
+
+### 12. **Debugging Tests**
+
+Vitest provides tools for debugging tests, such as `--inspect` and `--ui`.
+
+#### Example:
+
+Run Vitest in debug mode:
+
+```bash
+vitest --inspect
+```
+
+- Use `console.log` or breakpoints to debug your tests.
+- Use the `--ui` flag for an interactive testing interface.
+
+---
+
+### 13. **Best Practices**
+
+Here are some best practices for writing tests with Vitest:
+
+1. **Keep tests small and focused**: Test one thing at a time.
+2. **Use descriptive test names**: Make it clear what each test is checking.
+3. **Avoid testing implementation details**: Focus on behavior, not how the code is implemented.
+4. **Use mocks and spies sparingly**: Over-mocking can make tests brittle.
+5. **Run tests frequently**: Integrate tests into your development workflow.
