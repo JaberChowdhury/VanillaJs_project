@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Array extras > array snapshot 1`] = `
+[
+  1,
+  2,
+  3,
+]
+`;

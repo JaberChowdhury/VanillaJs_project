@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Boolean extras > boolean snapshot 1`] = `true`;
+
+exports[`Boolean extras > boolean snapshot 2`] = `true`;

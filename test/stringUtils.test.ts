@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, test, expect } from "vitest";
 import { makeLowerCase, makeReverse, makeUpperCase } from "../src/stringUtils";
 
 describe("string utils", () => {
