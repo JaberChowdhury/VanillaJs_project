@@ -737,3 +737,245 @@ test("isPalindrome returns false for non-palindromes", () => {
   expect(isPalindrome("Vitest")).toBe(false);
 });
 ```
+
+**_<h1 style="text-align:center;">Object</h1>_**
+
+### 1. **Testing Objects**
+
+Objects are a fundamental part of JavaScript, and testing them involves checking their properties, structure, and values.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+const user = {
+  name: "John Doe",
+  age: 30,
+  isAdmin: false,
+};
+
+test("user object should have correct properties", () => {
+  expect(user).toEqual({
+    name: "John Doe",
+    age: 30,
+    isAdmin: false,
+  });
+});
+
+test("user should not be an admin", () => {
+  expect(user.isAdmin).toBe(false);
+});
+```
+
+- Use `.toEqual()` for deep equality checks on objects.
+- Use `.toHaveProperty()` to check if an object has a specific property.
+
+---
+
+### 2. **Testing Functions**
+
+Testing functions involves verifying their return values, side effects, and behavior with different inputs.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+function add(a, b) {
+  return a + b;
+}
+
+test("add function should return the sum of two numbers", () => {
+  expect(add(2, 3)).toBe(5);
+  expect(add(-1, 1)).toBe(0);
+  expect(add(0, 0)).toBe(0);
+});
+```
+
+- Use `.toBe()` for primitive return values.
+- Use `.toThrow()` to test if a function throws an error.
+
+---
+
+### 3. **Testing Asynchronous Code**
+
+Vitest makes it easy to test asynchronous code, such as Promises or `async/await`.
+
+#### Example with Promises:
+
+```javascript
+import { expect, test } from "vitest";
+
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve("data"), 100);
+  });
+}
+
+test('fetchData should return "data"', async () => {
+  await expect(fetchData()).resolves.toBe("data");
+});
+```
+
+#### Example with `async/await`:
+
+```javascript
+import { expect, test } from "vitest";
+
+async function fetchData() {
+  return "data";
+}
+
+test('fetchData should return "data"', async () => {
+  const data = await fetchData();
+  expect(data).toBe("data");
+});
+```
+
+- Use `.resolves` and `.rejects` for testing Promises.
+- Use `async/await` for cleaner asynchronous test code.
+
+---
+
+### 4. **Testing React Components (if applicable)**
+
+If you’re working with React, Vitest can be combined with libraries like **React Testing Library** to test components.
+
+#### Example:
+
+```javascript
+import { render, screen } from "@testing-library/react";
+import { expect, test } from "vitest";
+import App from "./App";
+
+test("renders learn react link", () => {
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
+```
+
+- Use `render` to render components.
+- Use `screen` to query elements in the rendered output.
+
+---
+
+### 5. **Mocking**
+
+Mocking is essential for isolating the code under test. Vitest provides utilities for mocking functions, modules, and dependencies.
+
+#### Example:
+
+```javascript
+import { expect, test, vi } from "vitest";
+
+const fetchData = vi.fn(() => Promise.resolve("data"));
+
+test('fetchData should return "data"', async () => {
+  const result = await fetchData();
+  expect(result).toBe("data");
+  expect(fetchData).toHaveBeenCalled();
+});
+```
+
+- Use `vi.fn()` to create mock functions.
+- Use `vi.spyOn()` to spy on existing functions.
+
+---
+
+### 6. **Snapshot Testing**
+
+Snapshot testing is useful for ensuring that the output of a component or function doesn’t change unexpectedly.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+function generateMarkup() {
+  return "<div>Hello, World!</div>";
+}
+
+test("markup should match snapshot", () => {
+  const markup = generateMarkup();
+  expect(markup).toMatchSnapshot();
+});
+```
+
+- Use `.toMatchSnapshot()` to compare the output with a stored snapshot.
+- Update snapshots with `vitest -u` if the output changes intentionally.
+
+---
+
+### 7. **Testing Edge Cases**
+
+Always test edge cases to ensure your code handles unexpected inputs gracefully.
+
+#### Example:
+
+```javascript
+import { expect, test } from "vitest";
+
+function divide(a, b) {
+  if (b === 0) throw new Error("Division by zero");
+  return a / b;
+}
+
+test("divide should throw an error when dividing by zero", () => {
+  expect(() => divide(10, 0)).toThrow("Division by zero");
+});
+```
+
+- Use `.toThrow()` to test error handling.
+
+---
+
+### 8. **Grouping Tests with `describe`**
+
+Use `describe` to group related tests and improve readability.
+
+#### Example:
+
+```javascript
+import { describe, expect, test } from "vitest";
+
+describe("Math operations", () => {
+  test("add", () => {
+    expect(1 + 1).toBe(2);
+  });
+
+  test("subtract", () => {
+    expect(3 - 1).toBe(2);
+  });
+});
+```
+
+- Use `describe` to organize tests into logical groups.
+
+---
+
+### 9. **Setup and Teardown**
+
+Use `beforeEach`, `afterEach`, `beforeAll`, and `afterAll` to run setup and teardown code.
+
+#### Example:
+
+```javascript
+import { beforeEach, expect, test } from "vitest";
+
+let counter = 0;
+
+beforeEach(() => {
+  counter = 0;
+});
+
+test("increment counter", () => {
+  counter++;
+  expect(counter).toBe(1);
+});
+
+test("reset counter", () => {
+  expect(counter).toBe(0);
+});
+```
