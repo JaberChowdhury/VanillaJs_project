@@ -1,13 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Smartwatch Product</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+  <body
+    class="container mx-auto text-gray-800 flex justify-center items-center min-h-screen"
+  >
+    <main class="w-full flex justify-between items-center">
+      <!-- left  -->
+      <div>
+        <img
+          id="imageContainer"
+          class="w-[90%]"
+          src="./images/cyan.png"
+          alt="cyan image"
+        />
+      </div>
+      <!-- right -->
+      <div class="flex justify-center flex-col gap-y-4">
+        <div class="font-bold text-3xl">Classy modern smart watch</div>
+        <!-- star section -->
+        <div class="w-2/4 flex justify-between">
+          <div class="*:text-yellow-500">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <a href="*">
+            <div class="text-gray-400">(2 reviews)</div>
+          </a>
+        </div>
+        <!-- money  -->
+        <div class="flex font-bold text-3xl gap-x-3">
+          <div class="text-gray-500/[0.5] line-through">$90.00</div>
+          <div>$70.00</div>
+        </div>
+        <!-- description  -->
+        <div>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+          dolore iure ullam tenetur. Incidunt dicta vero animi eius deleniti
+          blanditiis, esse, quia minus iure odio libero perspiciatis facere
+          explicabo non.
+        </div>
+
+        <!-- specification  -->
+        <div class="font-bold">
+          <div class="flex">
+            <div class="w-16">Type</div>
+            <div>Watch</div>
+          </div>
+          <div class="flex">
+            <div class="w-16">Model</div>
+            <div>Forerunner 290XT</div>
+          </div>
+        </div>
+
+        <!-- brand color  -->
+        <div>
+          <h1 class="font-bold text-xl">Band color</h1>
+          <!-- colors  -->
+          <div class="flex gap-x-3 *:size-6 *:cursor-pointer">
+            <div id="cyan" class="rounded-full bg-cyan-400 bands"></div>
+            <div id="gray" class="rounded-full bg-gray-400 bands"></div>
+            <div id="purple" class="rounded-full bg-purple-400 bands"></div>
+            <div id="teal" class="rounded-full bg-teal-400 bands"></div>
+          </div>
+        </div>
+
+        <!-- wrist size  -->
+        <div>
+          <h1 class="font-bold text-xl">Wrist size</h1>
+          <div class="flex gap-x-2 *:cursor-pointer">
+            <div
+              class="wrists p-2 px-3 border rounded-md text-xl font-bold border-gray-500"
+            >
+              S $68
+            </div>
+            <div
+              class="wrists p-2 px-3 border rounded-md text-xl font-bold border-gray-500"
+            >
+              M $780
+            </div>
+            <div
+              class="wrists p-2 px-3 border rounded-md text-xl font-bold border-gray-500"
+            >
+              L $880
+            </div>
+            <div
+              class="wrists p-2 px-3 border rounded-md text-xl font-bold border-gray-500"
+            >
+              XL $9800
+            </div>
+            <div
+              class="wrists p-2 px-3 border rounded-md text-xl font-bold border-gray-500"
+            >
+              XSL $9900
+            </div>
+          </div>
+        </div>
+        <!-- counter  -->
+        <div class="flex justify-between items-center w-[80%]">
+          <div
+            class="flex border p-2 px-4 gap-x-10 font-bold text-2xl *:cursor-pointer"
+          >
+            <div id="minusbtn"><i class="fa-solid fa-minus"></i></div>
+            <div id="count" class="cursor-default">0</div>
+            <div id="plusbtn"><i class="fa-solid fa-plus"></i></div>
+          </div>
+          <button
+            id="addcartbtn"
+            class="font-bold text-xl bg-violet-600 rounded-md px-6 p-2 text-white cursor-pointer"
+          >
+            Add to Cart
+          </button>
+          <!-- love icon  -->
+          <i
+            class="fa-solid fa-heart text-4xl text-violet-500 cursor-pointer"
+          ></i>
+        </div>
+      </div>
+    </main>
+    <!-- checkout model -->
+    <section
+      id="checkoutsection"
+      class="absolute w-screen h-screen hidden justify-center items-center bg-gray-400/[0.6]"
+    >
+      <div class="absolute top-4/5">
+        <button
+          class="font-bold text-3 3xl bg-yellow-100 rounded-md p-2 px-6 cursor-pointer"
+        >
+          Checkout <span id="totalitem">0</span> item
+        </button>
+        <button
+          id="cencelcheckout"
+          class="z-30 bg-red-400 p-2 px-3 text-base rounded-full text-white cursor-pointer"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </section>
+
+    <!-- buy model  -->
+    <section
+      id="buymodelcontainer"
+      class="absolute w-screen h-screen hidden justify-center items-center bg-gray-400/[0.6]"
+    >
+      <div class="bg-white p-3 rounded w-4/5">
+        <h1 class="font-bold text-2xl">Your Cart</h1>
+        <div class="w-full p-2 flex flex-col gap-y-5">
+          <div class="w-full grid grid-cols-5 gap-x-6 font-bold text-center">
+            <div>Item</div>
+            <div>color</div>
+            <div>size</div>
+            <div>quantity</div>
+            <div>price</div>
+          </div>
+          <div
+            id="selectedItemList"
+            class="w-full flex justify-center items-center flex-col font-bold"
+          ></div>
+          <div class="w-full font-bold grid grid-cols-5 gap-x-6 text-center">
+            <div>Total</div>
+            <div></div>
+            <div></div>
+            <div id="totalquantity">0</div>
+            <div id="totalprice">0</div>
+          </div>
+          <div class="w-full flex justify-end items-center gap-x-4">
+            <button
+              id="ContinueShoppingbtn"
+              class="p-2 px-5 rounded-md font-bold bg-purple-500 text-white"
+            >
+              Continue Shopping
+            </button>
+            <button
+              id="checkoutbtn"
+              class="p-2 px-5 rounded-md font-bold bg-purple-800 text-white"
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+    <script src="./js/main.js"></script>
   </body>
+  <style>
+    * {
+      /* border: 1px dotted; */
+    }
+  </style>
 </html>
