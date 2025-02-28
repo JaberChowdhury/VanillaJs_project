@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      class MiniComponent {
+        constructor({ type, props = {}, children = [], state = {} }) {
+          this.type = type;
+          this.props = props;
+          this.children = children;
+          this.state = state;
+          this.domElement = null;
+        }
+
+        setState(newState) {
+          Object.assign(this.state, newState);
+          render(app, document.getElementById("root"));
+        }
+
+        createDOM() {
+          const element = document.createElement(this.type);
+
+          // Apply properties
+          Object.entries(this.props).forEach(([key, value]) => {
+            if (key.startsWith("on") && typeof value === "function") {
+              element.addEventListener(
+                key.substring(2).toLowerCase(),
+                value.bind(this)
+              );
+            } else if (key === "class") {
+              element.className = value;
+            } else if (key === "style" && typeof value === "object") {
+              Object.assign(element.style, value);
+            } else {
+              element.setAttribute(key, value);
+            }
+          });
+
+          // Append children
+          this.children.forEach((child) => {
+            if (typeof child === "function") {
+              element.appendChild(document.createTextNode(child()));
+            } else if (child instanceof Object) {
+              element.appendChild(new MiniComponent(child).createDOM());
+            } else {
+              element.appendChild(document.createTextNode(child));
+            }
+          });
+
+          return element;
+        }
+      }
+
+      function render(obj, container) {
+        container.innerHTML = "";
+        container.appendChild(new MiniComponent(obj).createDOM());
+      }
+
+      // Example usage:
+      const app = {
+        type: "div",
+        props: { id: "app", class: "container p-5 bg-gray-100" },
+        state: { count: 0 },
+        children: [
+          {
+            type: "h1",
+            props: { class: "text-3xl font-bold text-black" },
+            children: [() => app.state.count],
+          },
+          {
+            type: "button",
+            props: {
+              class: "btn bg-blue-500 text-white px-4 py-2 rounded",
+              onClick() {
+                app.state.count++;
+                render(app, document.getElementById("root"));
+              },
+            },
+            children: ["Add by one"],
+          },
+          {
+            type: "button",
+            props: {
+              class: "btn bg-blue-500 text-white px-4 py-2 rounded",
+              onclick() {
+                app.state.count--;
+                render(app, document.getElementById("root"));
+              },
+            },
+            children: ["Remove by one"],
+          },
+        ],
+      };
+
+      render(app, document.getElementById("root"));
+    </script>
+  </body>
+</html>
