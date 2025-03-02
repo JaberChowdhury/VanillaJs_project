@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smartwatch Product</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+      integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="root" class="container"></div>
+
+    <div id="preview" class="mockup-code w-full"></div>
+    <script>
+      const dom = ({ type, children = [], classes }) => {
+        const domtag = document.createElement(type);
+
+        children.forEach((element) => {
+          if (typeof element === "string") {
+            domtag.appendChild(document.createTextNode(element));
+          } else if (typeof element === "object" && element !== null) {
+            domtag.appendChild(dom(element)); // recursion
+          }
+        });
+        if (classes && classes !== "") {
+          domtag.setAttribute("class", classes);
+        }
+        return domtag;
+      };
+
+      const render = (app, container) => {
+        container.innerHTML = "";
+        container.appendChild(app);
+      };
+      const data = Array.from({ length: 20 }).map((d, i) => {
+        return {
+          type: "button",
+          classes: "btn btn-outline btn-secondary px-20",
+          children: [i.toString()],
+        };
+      });
+
+      const app = dom({
+        type: "div",
+        children: [
+          {
+            type: "h1",
+            classes: "bg-green-200",
+            children: ["Awesome Bangladesh"],
+          },
+          {
+            type: "div",
+            classes: "grid grid-cols-5 gap-4 p-4",
+            children: data,
+          },
+          {
+            type: "ul",
+            children: [{ type: "li", children: ["haha"] }],
+          },
+          {
+            type: "div",
+            children: [
+              {
+                type: "span",
+                classes: "loading loading-infinity  loading-xs",
+              },
+              {
+                type: "span",
+                classes: "loading loading-infinity  loading-sm",
+              },
+              {
+                type: "span",
+                classes: "loading loading-infinity  loading-md",
+              },
+              {
+                type: "span",
+                classes: "loading loading-infinity  loading-xl",
+              },
+              {
+                type: "span",
+                classes: "loading loading-infinity text-error loading-lg",
+              },
+            ],
+          },
+        ],
+      });
+
+      render(app, document.getElementById("root"));
+      // Get the full outerHTML and properly format it
+      const renderPreview = () => {
+        const formattedHTML = app.outerHTML
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;");
+
+        // Split lines at `&gt;<&lt;` to keep structure
+        const splitHTML = formattedHTML.split("&gt;&lt;");
+
+        // Construct preview HTML with Tailwind styles
+        let previewHTMLData = "";
+        for (let i = 0; i < splitHTML.length; i++) {
+          previewHTMLData += `
+              <pre data-prefix="${i}" class="flex gap-2 items-center">
+                <code>&lt;${splitHTML[i]}&gt;</code>
+              </pre>
+            `;
+        }
+        // Inject formatted HTML into preview section
+        document.getElementById("preview").innerHTML = previewHTMLData;
+      };
+      renderPreview();
+    </script>
+  </body>
+</html>
