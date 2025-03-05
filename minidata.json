@@ -1,0 +1,50 @@
+{
+  "kind": "webfonts#webfontList",
+  "items": [
+    {
+      "family": "42dot Sans",
+      "variants": ["300", "regular", "500", "600", "700", "800"],
+      "subsets": ["korean", "latin"],
+      "version": "v1",
+      "lastModified": "2025-01-28",
+      "files": {
+        "300": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRiHYkNScXgiTCI-.ttf",
+        "regular": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRjZYkNScXgiTCI-.ttf",
+        "500": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRjrYkNScXgiTCI-.ttf",
+        "600": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRgHZUNScXgiTCI-.ttf",
+        "700": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRg-ZUNScXgiTCI-.ttf",
+        "800": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRhZZUNScXgiTCI-.ttf"
+      },
+      "category": "sans-serif",
+      "kind": "webfonts#webfont",
+      "menu": "https://fonts.gstatic.com/s/42dotsans/v1/BXR7vFK-2v7FnQ1xTYUJy2T9rRBKbpqjqRjZYnNTe3w.ttf"
+    },
+    {
+      "family": "ABeeZee",
+      "variants": ["regular", "italic"],
+      "subsets": ["latin", "latin-ext"],
+      "version": "v22",
+      "lastModified": "2024-09-04",
+      "files": {
+        "regular": "https://fonts.gstatic.com/s/abeezee/v22/esDR31xSG-6AGleN6tKukbcHCpE.ttf",
+        "italic": "https://fonts.gstatic.com/s/abeezee/v22/esDT31xSG-6AGleN2tCklZUCGpG-GQ.ttf"
+      },
+      "category": "sans-serif",
+      "kind": "webfonts#webfont",
+      "menu": "https://fonts.gstatic.com/s/abeezee/v22/esDR31xSG-6AGleN2tOklQ.ttf"
+    },
+    {
+      "family": "ADLaM Display",
+      "variants": ["regular"],
+      "subsets": ["adlam", "latin", "latin-ext"],
+      "version": "v1",
+      "lastModified": "2024-09-04",
+      "files": {
+        "regular": "https://fonts.gstatic.com/s/adlamdisplay/v1/KFOhCnGXkPOLlhx6jD8_b1ZECsHYkYBPY3o.ttf"
+      },
+      "category": "display",
+      "kind": "webfonts#webfont",
+      "menu": "https://fonts.gstatic.com/s/adlamdisplay/v1/KFOhCnGXkPOLlhx6jD8_b1ZEOsDSlQ.ttf"
+    }
+  ]
+}

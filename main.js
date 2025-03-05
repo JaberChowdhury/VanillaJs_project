@@ -1,44 +1,44 @@
 import "./style.css";
+import data from "./minidata.json";
 
 window.onload = () => {
-  const numberTag = document.querySelector(".number");
+  const parsedData = JSON.parse(JSON.stringify(data));
+  const dataArray = Object.entries(parsedData);
 
-  const generateNumbers = () => {
-    let newArray = [];
-    for (let i = 0; i < window.innerHeight; i++) {
-      newArray.push(Math.floor(Math.random() * 9));
+  const render_data = (eachData) => {
+    const domtag = document.createElement("div");
+
+    for (let i = 0; i < eachData.length; i++) {
+      const key = eachData[i][0];
+      const value = eachData[i][1];
+
+      const keyElement = document.createElement("strong");
+      keyElement.textContent = key + ": ";
+      domtag.appendChild(keyElement);
+
+      if (typeof value === "string" || typeof value === "number") {
+        const valueElement = document.createElement("span");
+        valueElement.textContent = value;
+        valueElement.setAttribute("class", "list-row border border-black");
+        domtag.appendChild(valueElement);
+      } else if (typeof value === "object" && value !== null) {
+        const nestedContainer = render_data(Object.entries(value));
+        nestedContainer.setAttribute("class", "list-row");
+        domtag.appendChild(nestedContainer);
+      } else if (typeof value === "array" && value !== null) {
+        const nestedContainer = render_data(data);
+        nestedContainer.setAttribute("class", "list-row");
+        domtag.appendChild(nestedContainer);
+      }
+
+      domtag.appendChild(document.createElement("br"));
     }
-    return newArray;
+
+    return domtag;
   };
 
-  // add numbers inside numberTag
-  const addNumbers = () => {
-    const numbers = generateNumbers();
-    let newElements = "";
-    for (let i = 0; i < numbers.length; i++) {
-      newElements += "<span class='number_block'>" + numbers[i] + "</span>";
-    }
-    numberTag.innerHTML = newElements;
-  };
-  addNumbers();
-
-  const number_blocks = document.querySelectorAll(".number_block");
-
-  // state
-  let hover_count = 0;
-
-  const make_color = () => {
-    return `hsl(${hover_count},50%,50%)`;
-  };
-
-  number_blocks.forEach((block) => {
-    block.addEventListener("mouseover", () => {
-      hover_count++;
-      block.style.textShadow = `0px 0px 10px ${make_color()},0px 0px 20px ${make_color()},0px 0px 40px ${make_color()},0px 0px 80px ${make_color()},0px 0px 160px ${make_color()}`;
-    });
-
-    block.addEventListener("mouseout", () => {
-      block.style.textShadow = "";
-    });
-  });
+  // App root
+  const root = document.getElementById("root");
+  const app = render_data(dataArray);
+  root.appendChild(app);
 };
